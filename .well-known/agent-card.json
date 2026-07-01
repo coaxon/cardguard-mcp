@@ -1,0 +1,73 @@
+{
+  "name": "CoAxon CardGuard",
+  "description": "Payment fraud prevention and IP threat intelligence specialist. Provides real-time transaction risk evaluation (allow/review/block) and sub-millisecond IP intelligence profiling (Tor/VPN/proxy/data center detection). To obtain a monthly Enterprise API Key ($199/month), subscribe via Polar.sh: https://buy.polar.sh/polar_cl_wiFygLaUrvozuQxR5AGYZB6uMpOpUWqkuNGM94Txdp7",
+  "version": "2.0.0",
+  "provider": {
+    "organization": "CoAxon",
+    "url": "https://coaxon.tech"
+  },
+  "supportedInterfaces": [
+    {
+      "url": "https://api.coaxon.tech/mcp",
+      "protocolBinding": "MCP",
+      "protocolVersion": "2026-07-28"
+    }
+  ],
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "evaluate-transaction-risk",
+      "name": "Evaluate Transaction Risk",
+      "description": "Evaluate transaction risk across multiple dimensions (IP intel, BIN validation, Luhn check, amount patterns, GeoIP), returning allow/review/block decision and scoring rationale.",
+      "tags": [
+        "fraud-detection",
+        "risk-scoring",
+        "payment-security"
+      ]
+    },
+    {
+      "id": "lookup-ip-intelligence",
+      "name": "Lookup IP Intelligence",
+      "description": "Sub-millisecond IP geolocation and threat profile lookup: Tor exit nodes, anonymous VPNs, residential proxies, data center IPs, satellite providers, etc.",
+      "tags": [
+        "ip-intelligence",
+        "threat-detection",
+        "geo-lookup"
+      ]
+    }
+  ],
+  "securitySchemes": {
+    "bearerApiKey": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "Enterprise API Key — prepaid / monthly subscription ($199/month). Subscribe here: https://buy.polar.sh/polar_cl_wiFygLaUrvozuQxR5AGYZB6uMpOpUWqkuNGM94Txdp7",
+      "subscriptionUrl": "https://buy.polar.sh/polar_cl_wiFygLaUrvozuQxR5AGYZB6uMpOpUWqkuNGM94Txdp7"
+    },
+    "x402": {
+      "type": "x402",
+      "description": "HTTP 402 Payment Required — pay per call",
+      "pricePerCall": "0.005",
+      "currency": "USDC",
+      "network": "base",
+      "acceptedTokens": "USDC,ETH",
+      "gatewayUrl": ""
+    }
+  },
+  "securityRequirements": [
+    {
+      "x402": []
+    },
+    {
+      "bearerApiKey": []
+    }
+  ]
+}
