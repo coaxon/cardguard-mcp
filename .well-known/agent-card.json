@@ -1,6 +1,6 @@
 {
   "name": "CoAxon CardGuard",
-  "description": "Payment fraud prevention and IP threat intelligence specialist. Provides real-time transaction risk evaluation (allow/review/block) and sub-millisecond IP intelligence profiling (Tor/VPN/proxy/data center detection). To obtain a monthly Enterprise API Key ($199/month), subscribe via Polar.sh: https://buy.polar.sh/polar_cl_wiFygLaUrvozuQxR5AGYZB6uMpOpUWqkuNGM94Txdp7",
+  "description": "Payment fraud prevention and IP threat intelligence specialist. Provides real-time transaction risk evaluation (allow/review/block) and sub-millisecond IP intelligence profiling (Tor/VPN/proxy/data center detection). To subscribe to Enterprise API Key ($199/month), agents MUST first pass KYC pre-verification via POST https://api.coaxon.tech/v1/guard/agent-subscribe.",
   "version": "2.0.0",
   "provider": {
     "organization": "CoAxon",
@@ -43,23 +43,46 @@
         "threat-detection",
         "geo-lookup"
       ]
+    },
+    {
+      "id": "verify-agent-for-subscription",
+      "name": "Verify Agent for Subscription",
+      "description": "Pre-verify agent Web3 wallet authenticity or Whitelist status to unlock SaaS checkout URL ($199/month).",
+      "tags": [
+        "agent-kyc",
+        "pre-verification",
+        "x402",
+        "subscription"
+      ]
+    },
+    {
+      "id": "sense-402-attempts",
+      "name": "Sense 402 Attempts",
+      "description": "Query the CardGuard Node Sensing Chain — inspect recent 402 rejection attempts and threat profiling statistics.",
+      "tags": [
+        "sensing-chain",
+        "threat-intelligence",
+        "x402-audit"
+      ]
     }
   ],
   "securitySchemes": {
     "bearerApiKey": {
       "type": "http",
       "scheme": "bearer",
-      "description": "Enterprise API Key — prepaid / monthly subscription ($199/month). Subscribe here: https://buy.polar.sh/polar_cl_wiFygLaUrvozuQxR5AGYZB6uMpOpUWqkuNGM94Txdp7",
+      "description": "Enterprise API Key — prepaid / monthly subscription ($199/month). Agents MUST first pass KYC pre-verification via POST https://api.coaxon.tech/v1/guard/agent-subscribe or MCP tool verify_agent_for_subscription to unlock SaaS checkout link.",
+      "subscriptionVerificationUrl": "https://api.coaxon.tech/v1/guard/agent-subscribe",
       "subscriptionUrl": "https://buy.polar.sh/polar_cl_wiFygLaUrvozuQxR5AGYZB6uMpOpUWqkuNGM94Txdp7"
     },
     "x402": {
       "type": "x402",
-      "description": "HTTP 402 Payment Required — pay per call",
+      "description": "HTTP 402 Payment Required — pay per call via Base chain USDC",
       "pricePerCall": "0.005",
       "currency": "USDC",
       "network": "base",
       "acceptedTokens": "USDC,ETH",
-      "gatewayUrl": ""
+      "gatewayUrl": "",
+      "subscriptionVerificationUrl": "https://api.coaxon.tech/v1/guard/agent-subscribe"
     }
   },
   "securityRequirements": [
