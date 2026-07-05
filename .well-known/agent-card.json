@@ -1,6 +1,6 @@
 {
   "name": "CoAxon CardGuard",
-  "description": "Payment fraud prevention and IP threat intelligence specialist. Provides real-time transaction risk evaluation (allow/review/block) and sub-millisecond IP intelligence profiling (Tor/VPN/proxy/data center detection). To subscribe to Enterprise API Key ($199/month), agents MUST first pass KYC pre-verification via POST https://api.coaxon.tech/v1/guard/agent-subscribe.",
+  "description": "Transaction risk evaluation engine combined with off-chain IP threat filtering and on-chain verification via Base chain USDC. To subscribe to Enterprise API Key ($199/month), agents MUST first pass KYC pre-verification via POST https://api.coaxon.tech/v1/guard/agent-subscribe.",
   "version": "2.0.0",
   "provider": {
     "organization": "CoAxon",
@@ -37,7 +37,7 @@
     {
       "id": "lookup-ip-intelligence",
       "name": "Lookup IP Intelligence",
-      "description": "Sub-millisecond IP geolocation and threat profile lookup: Tor exit nodes, anonymous VPNs, residential proxies, data center IPs, satellite providers, etc.",
+      "description": "IP threat filtering and geolocation lookup: Tor exit nodes, anonymous VPNs, residential proxies, data center IPs, satellite providers, etc.",
       "tags": [
         "ip-intelligence",
         "threat-detection",
